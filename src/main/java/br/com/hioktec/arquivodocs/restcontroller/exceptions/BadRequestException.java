@@ -1,4 +1,4 @@
-package br.com.hioktec.arquivodocs.rest.exceptions;
+package br.com.hioktec.arquivodocs.restcontroller.exceptions;
 
 public class BadRequestException extends RuntimeException{
 

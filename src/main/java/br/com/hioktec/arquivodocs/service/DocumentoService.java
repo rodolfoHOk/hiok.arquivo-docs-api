@@ -13,7 +13,7 @@ import br.com.hioktec.arquivodocs.repository.CaixaRepository;
 import br.com.hioktec.arquivodocs.repository.ClienteRepository;
 import br.com.hioktec.arquivodocs.repository.DocumentoRepository;
 import br.com.hioktec.arquivodocs.repository.TipoDocumentoRepository;
-import br.com.hioktec.arquivodocs.rest.exceptions.BadRequestException;
+import br.com.hioktec.arquivodocs.restcontroller.exceptions.BadRequestException;
 import lombok.RequiredArgsConstructor;
 
 @Service

@@ -3,11 +3,12 @@ package br.com.hioktec.arquivodocs.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import br.com.hioktec.arquivodocs.model.Caixa;
 import br.com.hioktec.arquivodocs.repository.CaixaRepository;
 import br.com.hioktec.arquivodocs.repository.ClienteRepository;
-import br.com.hioktec.arquivodocs.rest.exceptions.BadRequestException;
+import br.com.hioktec.arquivodocs.restcontroller.exceptions.BadRequestException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -32,6 +33,10 @@ public class CaixaService {
 	
 	public List<Caixa> getCaixasByClienteId(Integer clienteId){
 		return caixaRepository.getAllByCliente(clienteId);
+	}
+	
+	public List<Integer> getCaixasIdsByClienteId(@PathVariable("id") Integer clienteId){
+		return caixaRepository.getIdsByCliente(clienteId);
 	}
 	
 	public void removeCaixa(Integer idCliente, Integer idCaixa) {

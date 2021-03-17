@@ -1,4 +1,4 @@
-package br.com.hioktec.arquivodocs.rest;
+package br.com.hioktec.arquivodocs.restcontroller;
 
 import java.io.File;
 import java.io.FileInputStream;

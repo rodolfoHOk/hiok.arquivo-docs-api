@@ -1,10 +1,11 @@
-package br.com.hioktec.arquivodocs.rest;
+package br.com.hioktec.arquivodocs.restcontroller;
 
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,12 +20,14 @@ import org.springframework.web.server.ResponseStatusException;
 
 import br.com.hioktec.arquivodocs.model.Caixa;
 import br.com.hioktec.arquivodocs.model.Cliente;
+import br.com.hioktec.arquivodocs.model.dto.ClienteSucintoDto;
 import br.com.hioktec.arquivodocs.repository.ClienteRepository;
-import br.com.hioktec.arquivodocs.rest.exceptions.BadRequestException;
+import br.com.hioktec.arquivodocs.restcontroller.exceptions.BadRequestException;
 import br.com.hioktec.arquivodocs.service.CaixaService;
 import br.com.hioktec.arquivodocs.service.ClienteService;
 import lombok.RequiredArgsConstructor;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/clientes")
 @RequiredArgsConstructor
@@ -59,8 +62,13 @@ public class ClienteController {
 	}
 	
 	@GetMapping("nome")
-	public List<Cliente> searchByName(@RequestParam("nome") String nome){
-		return repository.findByNome(nome);
+	public List<Cliente> searchByName(@RequestParam(value="nome", required=false, defaultValue="") String nome){
+		return repository.findByNome("%" + nome + "%");
+	}
+	
+	@GetMapping("sucinto")
+	public List<ClienteSucintoDto> getClientesSucinto(@RequestParam(value="nome", required=true) String nome){
+		return repository.getClientesSucintoByNome("%" + nome + "%");
 	}
 	
 	@DeleteMapping("{id}")
@@ -99,6 +107,11 @@ public class ClienteController {
 	@GetMapping("{id}/caixas")
 	public List<Caixa> getCaixasByCliente(@PathVariable("id") Integer clienteId){
 		return caixaService.getCaixasByClienteId(clienteId);
+	}
+	
+	@GetMapping("{id}/caixas/ids")
+	public List<Integer> getCaixasIdsByCliente(@PathVariable("id") Integer clienteId){
+		return caixaService.getCaixasIdsByClienteId(clienteId);
 	}
 	
 	@DeleteMapping("{idCliente}/caixas/{idCaixa}")

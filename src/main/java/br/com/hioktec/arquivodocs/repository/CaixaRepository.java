@@ -10,6 +10,9 @@ import br.com.hioktec.arquivodocs.model.Caixa;
 
 public interface CaixaRepository extends JpaRepository<Caixa, Integer> {
 	
-	@Query("Select c from Caixa c where c.cliente = :idCliente")
+	@Query("select c from Caixa c where c.cliente = :idCliente")
 	List<Caixa> getAllByCliente(@Param("idCliente") Integer idCliente);
+	
+	@Query("select c.id from Caixa c where c.cliente = :idCliente")
+	List<Integer> getIdsByCliente(@Param("idCliente") Integer idCliente);
 }

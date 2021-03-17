@@ -1,4 +1,4 @@
-package br.com.hioktec.arquivodocs.rest;
+package br.com.hioktec.arquivodocs.restcontroller;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import br.com.hioktec.arquivodocs.model.Documento;
 import br.com.hioktec.arquivodocs.repository.DocumentoRepository;
-import br.com.hioktec.arquivodocs.rest.exceptions.BadRequestException;
+import br.com.hioktec.arquivodocs.restcontroller.exceptions.BadRequestException;
 import br.com.hioktec.arquivodocs.service.DocumentoService;
 import lombok.RequiredArgsConstructor;
 

@@ -1,4 +1,4 @@
-package br.com.hioktec.arquivodocs.rest;
+package br.com.hioktec.arquivodocs.restcontroller;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
 
-import br.com.hioktec.arquivodocs.rest.exceptions.ErrosApi;
+import br.com.hioktec.arquivodocs.restcontroller.exceptions.ErrosApi;
 
 @RestControllerAdvice
 public class AvisosDaApiController {

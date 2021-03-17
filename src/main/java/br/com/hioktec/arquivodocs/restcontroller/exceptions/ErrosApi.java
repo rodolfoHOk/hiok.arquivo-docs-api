@@ -1,4 +1,4 @@
-package br.com.hioktec.arquivodocs.rest.exceptions;
+package br.com.hioktec.arquivodocs.restcontroller.exceptions;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,10 +1,11 @@
 package br.com.hioktec.arquivodocs.service;
 
+
 import org.springframework.stereotype.Service;
 
 import br.com.hioktec.arquivodocs.model.Cliente;
 import br.com.hioktec.arquivodocs.repository.ClienteRepository;
-import br.com.hioktec.arquivodocs.rest.exceptions.BadRequestException;
+import br.com.hioktec.arquivodocs.restcontroller.exceptions.BadRequestException;
 import lombok.RequiredArgsConstructor;
 
 @Service
