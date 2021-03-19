@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -22,6 +24,7 @@ import br.com.hioktec.arquivodocs.restcontroller.exceptions.BadRequestException;
 import br.com.hioktec.arquivodocs.service.DocumentoService;
 import lombok.RequiredArgsConstructor;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/documentos")
 @RequiredArgsConstructor
@@ -42,8 +45,13 @@ public class DocumentoController {
 	}
 	
 	@GetMapping
-	public List<Documento> getAll(){
-		return repository.findAll();
+	public List<Documento> findBy(
+			@RequestParam(name = "cliente", required = false) Integer cliente,
+			@RequestParam(name = "caixa", required = false) Integer caixa,
+			@RequestParam(name = "tipo", required = false) Integer tipoDocumento,
+			@RequestParam(name = "nome", required = false) String nome 
+			){
+		return repository.findAllBy(cliente, caixa, tipoDocumento, "%" + nome + "%");
 	}
 	
 	@GetMapping("{id}")

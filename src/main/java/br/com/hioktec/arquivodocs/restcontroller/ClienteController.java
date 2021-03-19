@@ -49,11 +49,6 @@ public class ClienteController {
 		}
 	}
 	
-	@GetMapping
-	public List<Cliente> getAll(){
-		return repository.findAll();
-	}
-	
 	@GetMapping("{id}")
 	public Cliente getById(@PathVariable Integer id) {
 		return repository.findById(id)
@@ -61,7 +56,7 @@ public class ClienteController {
 								new ResponseStatusException(HttpStatus.NOT_FOUND, "Cadastro do cliente não encontrado!"));
 	}
 	
-	@GetMapping("nome")
+	@GetMapping
 	public List<Cliente> searchByName(@RequestParam(value="nome", required=false, defaultValue="") String nome){
 		return repository.findByNome("%" + nome + "%");
 	}

@@ -1,7 +1,5 @@
 package br.com.hioktec.arquivodocs.service;
 
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -31,7 +29,6 @@ public class DocumentoService {
 	public Documento saveDocumento(Documento documento) {
 		if(isCaixaDoCliente(documento.getCaixa(), documento.getCliente())) {
 			if(tipoDocumentoRepository.existsById(documento.getTipoDocumento())) {
-				documento.setDtEntrada(Date.valueOf(LocalDate.now()));
 				return documentoRepository.save(documento);
 			} else {
 				throw new BadRequestException("Cadastro do tipo de documento não encontrado!");
